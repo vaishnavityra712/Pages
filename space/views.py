@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from space.models import Write
+from space.models import Write 
 
 def home(request):
     return render(request, 'home.html')
@@ -35,3 +35,17 @@ def notes(request):
     context = {'notes' : all}
     return render(request, 'notes.html', context)
 
+
+def search(request): 
+    
+    search=request.GET['search']
+    
+    # allnotes= Write.objects.all()
+    allnotes= Write.objects.filter(page_Heading__icontains=search)
+    alldesc= Write.objects.filter(page_description__icontains=search)
+
+
+
+    params = {'allnotes': allnotes, 'alldesc':alldesc}
+    return render(request, 'search.html', params)
+    

@@ -23,4 +23,6 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('write', views.write, name='write'),
     path('notes', views.notes, name='notes'),
+    path('search', views.search, name='search'),
+
 ]
